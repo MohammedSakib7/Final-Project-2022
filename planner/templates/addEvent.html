@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Event
+{% endblock %}
+
+{% block main %}
+
+<form action="/addEvent" method="post">
+    <div class="mb-3">
+        <lable>Title: </lable>
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="title" placeholder="Title" type="text">
+    </div>
+    <div class="mb-3">
+        <lable>Date: </lable>
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="date" name="date" placeholder="Date" type="date">
+    </div>
+    <div class="mb-3 form-group">
+        <lable>Description: </lable>
+        <textarea id="description" name="description" placeholder="Description" rows="3" class="form-control mx-auto w-auto" col="10"></textarea>
+    </div>
+    <button class="btn btn-primary" name="add" type="submit">Add</button>
+</form>
+
+{% endblock %}

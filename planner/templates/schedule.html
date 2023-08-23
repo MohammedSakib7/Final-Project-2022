@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Schedule
+{% endblock %}
+
+{% block main %}
+
+<form action="/schedule" method="post">
+    <div class="mb-3" style="display: inline-block">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="date1" placeholder="Date" type="date">
+    </div>
+    <span>-</span>
+    <div class="mb-3" style="display: inline-block">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="date2" placeholder="Date" type="date">
+    </div>
+    <!-- <div class="mb-3" style="display: inline-block">
+        <input class="form-control mx-auto w-auto" name="month" placeholder="Month" type="number">
+    </div>
+    <div class="mb-3" style="display: inline-block">
+        <input class="form-control mx-auto w-auto" name="year" placeholder="Year" type="number">
+    </div> -->
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+{% endblock %}

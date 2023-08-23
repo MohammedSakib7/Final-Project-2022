@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Event List
+{% endblock %}
+
+{% block main %}
+
+<!-- Table to display list of events in a given range, uses jinja to display items -->
+<table class="table table-striped" style="text-align: center; font-family: monospace">
+    <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Details</th>
+        <th></th>
+    </tr>
+    {% for event in events %}
+    <tr>
+        <td>{{event.title}}</td>
+        <td> {{event.date}} </td>
+        <td> {{event.details}} </td>
+        <td>
+            <!-- Button to remove events from table of events in the database -->
+            <form action="/eventList" method="post">
+                <input type="hidden" name="remove" value="{{ event.id }}">
+                <button class="btn btn-primary" type="submit">Remove</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

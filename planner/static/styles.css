@@ -1,0 +1,31 @@
+/* Size for brand */
+/* CSS for navbar, adopted from CS50 finance style.css */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Removes some of the margins size from linebreak */
+hr{
+    margin: 5px;
+}
+
+/* Gives today the color red and other days the color green */
+.tday{
+    background-color: #FAA0A0;
+}
+
+.ntday{
+    background-color: #A7D2CB;
+}
+
+/* makes sure that the divs are don't increase in size and wraps the line */
+.col ul li {
+    word-break: break-word;
+    border-bottom: solid #B4D2F0;
+}
+
+/* Highlights each individual event on hover */
+.col ul li:hover {
+    background-color: lightgrey;
+}

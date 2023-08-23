@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Journal
+{% endblock %}
+
+{% block main %}
+<!-- Button trigger modal code taken from bootstrap https://getbootstrap.com/docs/5.0/components/modal/ -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="font-family: Didot, serif">
+    Add Journal Entry
+</button>
+
+<!-- Modal code taken from Bootstrap https://getbootstrap.com/docs/5.0/components/modal/ -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Journal Entry</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Added form for journal entry -->
+                <form action="/journal" method="post">
+                    <div class="mb-3 form-group">
+                        <lable>Entry: </lable>
+                        <textarea id="description" name="entry" rows="3" class="form-control mx-auto w-auto" cols="50"></textarea>
+                    </div>
+                    <button class="btn btn-primary" name="add" type="submit">Add</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" style="padding: 20px; font-family: Didot, serif">
+    <!-- Table to display a list of journal entries -->
+    <table class="table table-striped" style="text-align: center; table-layout: fixed; word-wrap: break-word;">
+        <tr>
+            <th>Date</th>
+            <th>Entry</th>
+        </tr>
+        {% for entry in entries %}
+        <tr>
+            <td> {{entry.date}} </td>
+            <td> {{entry.entry}} </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

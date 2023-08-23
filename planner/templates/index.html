@@ -1,0 +1,143 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+<!-- Divide the page into two groups side by side -->
+<div class="row" style="font-family: Didot, serif; padding: 0.5%">
+    <!-- todo div takes 20% of the screen -->
+    <div style="width: 20%">
+        <h2>
+            To-Do List
+        </h2>
+        <!-- Create table to display list of tasks from todo list -->
+        <table class="table table-striped" style="table-layout: fixed; word-wrap: break-word; text-align: center">
+            <tr>
+                <th>Task</th>
+                <th><a href="/todo">add</a></th>
+            </tr>
+            <!-- Use jinja to loop through items from todo list and display in rows -->
+            {% for item in items %}
+                <tr>
+                    <!-- Display the task inside item -->
+                    <td>{{item.task}}</td>
+                    <!-- Make a button that will remove the task -->
+                    <td>
+                        <form action="/" method="post">
+                            <input type="hidden" name="remove" value="{{ item.id }}">
+                            <button class="btn btn-primary" type="submit">Done</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <!-- Form to add a task to the todo list -->
+        <form action="/todo" method="post">
+            <div class="mb-3" style="display: inline-block">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="To-Do" name="task" placeholder="Task" type="text">
+            </div>
+            <button class="btn btn-primary" name="add" type="submit">Add</button>
+        </form>
+    </div>
+
+    <!-- Div for the weekly calendar -->
+    <div class="col">
+        <h2>Week at a Glance</h2>
+        <!-- Divide the weekly calendar div into seven equal divs -->
+        <div class="row">
+            <div class="col" style="border-style: solid; border-width: 1px">
+                <!-- Set the class to ntday or tday to color the day today accordingly -->
+                <!-- Name each of the divs from sunday-saturday -->
+                <h5 class="{{ tclass[0] }}">Sunday</h5>
+                <!-- Display the specific date -->
+                <span style="font-size: 12px">{{listDays[0]}}</span>
+                <hr>
+                <ul style="text-align: left">
+                    <!-- Use jinja to list events for each day of the week -->
+                    {% for event in wevents %}
+                        {% if event.day == 6 %}
+                            <li>{{ event.title }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- Repeat 6 more times for each of the other dates and modified accordingly -->
+            <div class="col" style="border-style: solid; border-width: 1px">
+                <h5 class="{{ tclass[1] }}">Monday</h5>
+                <span style="font-size: 12px">{{listDays[1]}}</span>
+                <hr>
+                <ul style="text-align: left">
+                    {% for event in wevents %}
+                        {% if event.day == 0 %}
+                            <li>{{ event.title }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col" style="border-style: solid; border-width: 1px">
+                <h5 class="{{ tclass[2] }}">Tuesday</h5>
+                <span style="font-size: 12px">{{listDays[2]}}</span>
+                <hr>
+                <ul style="text-align: left">
+                    {% for event in wevents %}
+                        {% if event.day == 1 %}
+                            <li>{{ event.title }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col" style="border-style: solid; border-width: 1px">
+                <h5 class="{{ tclass[3] }}">Wednesday</h5>
+                <span style="font-size: 12px">{{listDays[3]}}</span>
+                <hr>
+                <ul style="text-align: left">
+                    {% for event in wevents %}
+                        {% if event.day == 2 %}
+                            <li>{{ event.title }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col" style="border-style: solid; border-width: 1px">
+                <h5 class="{{ tclass[4] }}">Thursday</h5>
+                <span style="font-size: 12px">{{listDays[4]}}</span>
+                <hr>
+                <ul style="text-align: left">
+                    {% for event in wevents %}
+                        {% if event.day == 3 %}
+                            <li>{{ event.title }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col" style="border-style: solid; border-width: 1px">
+                <h5 class="{{ tclass[5] }}">Friday</h5>
+                <span style="font-size: 12px">{{listDays[5]}}</span>
+                <hr>
+                <ul style="text-align: left">
+                    {% for event in wevents %}
+                        {% if event.day == 4 %}
+                            <li>{{ event.title }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col" style="border-style: solid; border-width: 1px">
+                <h5 class="{{ tclass[6] }}">Saturday</h5>
+                <span style="font-size: 12px">{{listDays[6]}}</span>
+                <hr>
+                <ul style="text-align: left">
+                    {% for event in wevents %}
+                        {% if event.day == 5 %}
+                            <li>{{ event.title }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Task to To-Do List
+{% endblock %}
+
+{% block main %}
+
+<form action="/todo" method="post">
+    <div class="mb-3" style="display: inline-block">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="To-Do" name="task" placeholder="Task" type="text">
+    </div>
+    <button class="btn btn-primary" name="add" type="submit">Add</button>
+</form>
+
+{% endblock %}
