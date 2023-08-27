@@ -1,5 +1,5 @@
-#Project Title: Planner
-
+#Project Title: Planner;
+----------------------------------
 Creator: Mohammed Sakib
 Description: A clean and useful website that serves as an organizational tool and journal
 YouTube video URL: https://youtu.be/nnzLuNMKaPM
